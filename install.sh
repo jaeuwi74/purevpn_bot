@@ -58,7 +58,7 @@ EOF"
 
 # 4. Activation et rechargement
 sudo systemctl enable purevpn-bot.service
-sudo systemctl enable wg-quick@wg0.service
+
 sudo systemctl daemon-reload
 
 # 5. On lance le bot UNE PREMIÈRE FOIS manuellement pour créer le fichier wg0.conf
@@ -67,7 +67,6 @@ echo -e "${GREEN}🔄 Génération de la première configuration VPN...${NC}"
 
 # 6 Maintenant que le fichier existe, on peut démarrer le VPN en toute sécurité
 echo -e "${GREEN}🔌 Démarrage de WireGuard...${NC}"
-sudo systemctl start wg-quick@wg0.service
-
+sudo systemctl enable --now wg-quick@wg0.service
 echo -e "${GREEN}✅ Configuration système terminée.${NC}"
 
