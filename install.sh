@@ -59,8 +59,6 @@ EOF"
 # 4. Activation et rechargement
 sudo systemctl enable purevpn-bot.service
 
-sudo systemctl daemon-reload
-
 # 5. On lance le bot UNE PREMIÈRE FOIS manuellement pour créer le fichier wg0.conf
 echo -e "${GREEN}🔄 Génération de la première configuration VPN...${NC}"
 ./venv/bin/python3 purevpn_bot.py
