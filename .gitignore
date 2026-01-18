@@ -1,0 +1,5 @@
+.env
+venv/
+debug_steps/
+__pycache__/
+*.conf
