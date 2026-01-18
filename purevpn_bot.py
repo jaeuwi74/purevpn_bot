@@ -13,14 +13,13 @@ PASSWORD = os.getenv("PASSWORD")
 SAVE_PATH = "wg0.conf"
 DEST_PATH = "/etc/wireguard/wg0.conf"
 SCREENSHOT_DIR = "debug_steps"
-DEBUG = False
+DEBUG = True
 
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 def take_ss(page, name):
     path = f"{SCREENSHOT_DIR}/{name}.png"
     time.sleep(0.5)
-    print(name)
     if DEBUG:
         try:
             page.screenshot(path=path)

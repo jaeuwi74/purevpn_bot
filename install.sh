@@ -37,6 +37,7 @@ After=network.target
 [Service]
 Type=oneshot
 User=$USER
+ExecStartPre=/bin/sleep 60
 WorkingDirectory=$PROJECT_DIR
 ExecStart=$PROJECT_DIR/venv/bin/python3 $PROJECT_DIR/purevpn_bot.py
 RemainAfterExit=yes
