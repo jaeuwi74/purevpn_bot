@@ -14,7 +14,6 @@ Ce projet automatise la récupération de configurations WireGuard depuis l'inte
 Clonez le dépôt et lancez le script d'installation automatique :
 
 ```bash
-git clone [https://github.com/jaeuwi74/purevpn_bot.git](https://github.com/jaeuwi74/purevpn_bot.git)
-cd purevpn-bot
+git clone https://github.com/jaeuwi74/purevpn_bot.git
 chmod +x install.sh
 ./install.sh
