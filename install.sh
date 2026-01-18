@@ -13,8 +13,22 @@ python3 -m venv venv
 ./venv/bin/playwright install chromium
 ./venv/bin/playwright install-deps
 
+# Demander l'email
+read -p "Entrez votre email PureVPN : " pure_email
+# Demander le mot de passe (saisie masquée pour plus de sécurité)
+read -s -p "Entrez votre mot de passe PureVPN : " pure_pass
+echo "" # Pour revenir à la ligne après la saisie masquée
+
+# Création du fichier .env
+cat <<EOF > .env
+EMAIL=$pure_email
+PASSWORD=$pure_pass
+EOF
+chmod 600 .env 
+
+
 # 2. Création du fichier Service pour le Bot
-echo -e "${GREEN}⚙️ Configuration du service systemd : purevpn_bot.service${NC}"
+echo -e "${GREEN}⚙️ Configuration du service systemd : purevpn-bot.service${NC}"
 sudo bash -c "cat <<EOF > /etc/systemd/system/purevpn-bot.service
 [Unit]
 Description=PureVPN Bot
@@ -42,11 +56,17 @@ After=purevpn-bot.service
 EOF"
 
 # 4. Activation et rechargement
+sudo systemctl enable purevpn-bot.service
+sudo systemctl enable wg-quick@wg0.service
 sudo systemctl daemon-reload
+
+# 5. On lance le bot UNE PREMIÈRE FOIS manuellement pour créer le fichier wg0.conf
+echo -e "${GREEN}🔄 Génération de la première configuration VPN...${NC}"
+./venv/bin/python3 purevpn_bot.py
+
+# 6 Maintenant que le fichier existe, on peut démarrer le VPN en toute sécurité
+echo -e "${GREEN}🔌 Démarrage de WireGuard...${NC}"
+sudo systemctl start wg-quick@wg0.service
+
 echo -e "${GREEN}✅ Configuration système terminée.${NC}"
 
-# 5. Préparation du .env
-if [ ! -f .env ]; then
-    cp .env.example .env 2>/dev/null || echo -e "PURE_EMAIL=\nPURE_PASS=" > .env
-    echo -e "⚠️ N'oublie pas de remplir tes identifiants dans le fichier .env !"
-fi

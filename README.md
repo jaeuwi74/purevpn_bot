@@ -5,7 +5,6 @@ Ce projet automatise la récupération de configurations WireGuard depuis l'inte
 ## ✨ Fonctionnalités
 
 * **Automatisation Totale** : Connexion au compte PureVPN et génération du fichier `wg0.conf`.
-* **Kill-Switch Natif** : Grâce à `systemd`, les services (Radarr, Sonarr, etc.) s'arrêtent si le VPN tombe.
 * **Zéro Persistance** : Utilise un navigateur "headless" pour une sécurité maximale.
 * **Dépendances Intelligentes** : WireGuard attend la fin du script avant de tenter une connexion.
 
@@ -18,5 +17,3 @@ git clone https://github.com/jaeuwi74/purevpn_bot.git
 cd purevpn_bot
 chmod +x install.sh
 ./install.sh
-source venv/bin/activate
-python purevpn_bot.py
