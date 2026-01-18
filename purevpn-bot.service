@@ -1,0 +1,19 @@
+[Unit]
+Description=Bot PureVPN Configuration Paris
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+TimeoutStartSec=300
+ExecStartPre=/bin/sleep 60
+User=jm
+Group=jm
+WorkingDirectory=/home/jm/purevpn_bot/
+# Chemin vers le Python de ton environnement virtuel
+ExecStart=/home/jm/purevpn_bot/venv/bin/python /home/jm/purevpn_bot/purevpn_auto.py
+# On garde le service "actif" même après la fin du script pour que les autres services puissent s'appuyer dessus
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
