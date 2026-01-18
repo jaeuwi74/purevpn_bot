@@ -1,0 +1,1 @@
+Pour installer, lancez chmod +x install.sh && ./install.sh. Le script configurera automatiquement le service système et la dépendance WireGuard.
