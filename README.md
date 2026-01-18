@@ -17,3 +17,6 @@ Clonez le dépôt et lancez le script d'installation automatique :
 git clone https://github.com/jaeuwi74/purevpn_bot.git
 chmod +x install.sh
 ./install.sh
+cd purevpn_bot
+source venv/bin/activate
+python purevpn.py

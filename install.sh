@@ -14,7 +14,7 @@ python3 -m venv venv
 ./venv/bin/playwright install-deps
 
 # 2. Création du fichier Service pour le Bot
-echo -e "${GREEN}⚙️ Configuration du service systemd : purevpn-bot.service${NC}"
+echo -e "${GREEN}⚙️ Configuration du service systemd : purevpn_bot.service${NC}"
 sudo bash -c "cat <<EOF > /etc/systemd/system/purevpn-bot.service
 [Unit]
 Description=PureVPN Bot
@@ -24,7 +24,7 @@ After=network.target
 Type=oneshot
 User=$USER
 WorkingDirectory=$PROJECT_DIR
-ExecStart=$PROJECT_DIR/venv/bin/python3 $PROJECT_DIR/purevpn-bot.py
+ExecStart=$PROJECT_DIR/venv/bin/python3 $PROJECT_DIR/purevpn_bot.py
 RemainAfterExit=yes
 
 [Install]
