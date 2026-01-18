@@ -19,4 +19,4 @@ cd purevpn_bot
 chmod +x install.sh
 ./install.sh
 source venv/bin/activate
-python purevpn.py
+python purevpn_bot.py
